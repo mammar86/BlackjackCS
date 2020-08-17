@@ -76,6 +76,22 @@ namespace BlackjackCS
     class Program
     {
 
+        static void Greeting()
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("==========Welcome to my prototype Mo's Blackjack Game==========");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
+
+        }
         static int Value(string name)
         {
 
@@ -137,14 +153,18 @@ namespace BlackjackCS
         static void Main(string[] args)
         {
 
+
+            Greeting();
+
             var index = 0;
-            var deck = new List<string> { "Ace Spades", "6 Hearts", "10 Spades", "9 Spades", "King Clubs", "King Hearts", "5 Spades", "2 Hearts", "10 Hearts", "Ace Clubs", "2 Clubs", "3 Spades", "9 Clubs", "7 Diamonds", "King Diamonds", "7 Hearts", "3 Diamonds", "Jack Diamonds", "5 Diamonds", "4 Hearts", "10 Clubs", "King Spades", "8 Hearts", "4 Diamonds", "9 Diamonds", "6 Spades", "4 Clubs", "7 Clubs", "5 Clubs", "7 Spades", "Jack Spades", "2 Diamonds", "6 Diamonds", "10 Diamonds", "Queen Clubs", "Queen Hearts", "Ace Hearts", "Queen Diamonds", "3 Hearts", "Ace Diamonds", "Jack Clubs", "9 Hearts", "Queen Spades", "3 Clubs", "8 Diamonds", "Jack Hearts", "4 Spades", "8 Spades", "8 Clubs", "5 Hearts", "2 Spades", "6 Clubs" };
+            var deck = new List<string> { "King Clubs", "6 Hearts", "10 Spades", "9 Spades", "Ace Spades", "King Hearts", "5 Spades", "2 Hearts", "10 Hearts", "Ace Clubs", "2 Clubs", "3 Spades", "9 Clubs", "7 Diamonds", "King Diamonds", "7 Hearts", "3 Diamonds", "Jack Diamonds", "5 Diamonds", "4 Hearts", "10 Clubs", "King Spades", "8 Hearts", "4 Diamonds", "9 Diamonds", "6 Spades", "4 Clubs", "7 Clubs", "5 Clubs", "7 Spades", "Jack Spades", "2 Diamonds", "6 Diamonds", "10 Diamonds", "Queen Clubs", "Queen Hearts", "Ace Hearts", "Queen Diamonds", "3 Hearts", "Ace Diamonds", "Jack Clubs", "9 Hearts", "Queen Spades", "3 Clubs", "8 Diamonds", "Jack Hearts", "4 Spades", "8 Spades", "8 Clubs", "5 Hearts", "2 Spades", "6 Clubs" };
 
 
             var playerHand = new List<Card>();
             var houseHand = new List<Card>();
 
             Console.WriteLine($"Player has {deck[2]} & {deck[3]}");
+            Console.WriteLine();
             var playerScore = Value(deck[2]) + Value(deck[3]);
             var houseScore = Value(deck[0]) + Value(deck[1]);
             var playerkeepHitting = true;
@@ -178,6 +198,8 @@ namespace BlackjackCS
                         Console.WriteLine("House Wins");
                         playerkeepHitting = false;
                         break;
+
+
                     }
 
 
@@ -188,6 +210,7 @@ namespace BlackjackCS
 
                     Console.WriteLine("House plays");
                     playerkeepHitting = false;
+
 
 
                 }
@@ -201,48 +224,48 @@ namespace BlackjackCS
 
             while (housekeepHitting && houseScore < 17)
             {
-                if (houseScore < 17)
+
+                var newCard = new Card()
                 {
 
+                    Name = deck[index]
 
-                    var newCard = new Card()
-                    {
+                };
 
-                        Name = deck[index]
+                Console.WriteLine(newCard.Name);
+                houseHand.Add(newCard);
+                houseScore += newCard.CardValue(newCard.Name);
 
-                    };
 
-                    Console.WriteLine(newCard.Name);
-                    houseHand.Add(newCard);
-                    houseScore += newCard.CardValue(newCard.Name);
 
+
+
+
+                if (houseScore > playerScore || houseScore == playerScore)
+                {
+                    Console.WriteLine("House Wins");
 
                 }
+                else
+                {
+                    Console.WriteLine("player Wins");
+                }
 
-                index++;
+
+
+
+
+
+
+
+
+
+
+
             }
 
-            if (houseScore > playerScore || houseScore == playerScore)
-            {
-                Console.WriteLine("House Wins");
-
-            }
-            else
-            {
-                Console.WriteLine("player Wins");
-            }
-
-
-
-
-
-
-
-
-
-
-
-
+            index++;
         }
+
     }
 }
