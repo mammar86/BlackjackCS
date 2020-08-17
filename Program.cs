@@ -239,27 +239,23 @@ namespace BlackjackCS
 
 
 
+                if (houseScore > 21)
+                {
 
+                    Console.WriteLine("player Wins");
 
-                if (houseScore > playerScore || houseScore == playerScore)
+                }
+
+                else if (houseScore > playerScore || houseScore == playerScore)
                 {
                     Console.WriteLine("House Wins");
 
                 }
+
                 else
                 {
                     Console.WriteLine("player Wins");
                 }
-
-
-
-
-
-
-
-
-
-
 
 
             }
